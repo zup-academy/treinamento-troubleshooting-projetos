@@ -1,0 +1,1 @@
+create sequence seq_cliente start 1 increment 1;
