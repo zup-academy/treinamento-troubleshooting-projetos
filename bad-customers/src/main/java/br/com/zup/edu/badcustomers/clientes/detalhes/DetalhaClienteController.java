@@ -1,7 +1,6 @@
 package br.com.zup.edu.badcustomers.clientes.detalhes;
 
 import br.com.zup.edu.badcustomers.clientes.Cliente;
-import br.com.zup.edu.badcustomers.clientes.ClienteJdbcRepository;
 import br.com.zup.edu.badcustomers.clientes.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,7 @@ import javax.validation.constraints.Positive;
 public class DetalhaClienteController {
 
     @Autowired
-    private ClienteJdbcRepository jdbcRepository;
+    private ClienteRepository jdbcRepository;
 
     private final ClienteRepository repository;
 
