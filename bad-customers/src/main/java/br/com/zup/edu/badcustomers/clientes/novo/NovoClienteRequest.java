@@ -1,6 +1,7 @@
 package br.com.zup.edu.badcustomers.clientes.novo;
 
 import br.com.zup.edu.badcustomers.clientes.Cliente;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,9 +14,12 @@ public class NovoClienteRequest {
     @NotBlank
     @Size(max = 120)
     private String nome;
+
+    @CPF
     @NotBlank
     @Size(max = 11)
     private String cpf;
+
     @NotNull
     @Positive
     private BigDecimal debitoAtual;

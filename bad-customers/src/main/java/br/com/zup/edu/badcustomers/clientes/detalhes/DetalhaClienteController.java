@@ -1,7 +1,9 @@
 package br.com.zup.edu.badcustomers.clientes.detalhes;
 
 import br.com.zup.edu.badcustomers.clientes.Cliente;
+import br.com.zup.edu.badcustomers.clientes.ClienteJdbcRepository;
 import br.com.zup.edu.badcustomers.clientes.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +17,19 @@ import javax.validation.constraints.Positive;
 @RestController
 public class DetalhaClienteController {
 
+    @Autowired
+    private ClienteJdbcRepository jdbcRepository;
+
     private final ClienteRepository repository;
 
     public DetalhaClienteController(ClienteRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/api/clintes-caloteiros/{id}")
+    @GetMapping("/api/clientes-caloteiros/{id}")
     public ResponseEntity<?> detalha(@PathVariable("id") @NotNull @Positive Long id) {
 
-        Cliente cliente = repository.findById(id).orElseThrow(() -> {
+        Cliente cliente = jdbcRepository.findById(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "cliente não encontrado");
         });
 

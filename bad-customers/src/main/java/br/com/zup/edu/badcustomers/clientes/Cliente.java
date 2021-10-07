@@ -1,6 +1,7 @@
 package br.com.zup.edu.badcustomers.clientes;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,6 +27,7 @@ public class Cliente {
     @Column(nullable = false, length = 120)
     private String nome;
 
+    @CPF
     @NotBlank @Size(max = 11)
     @Column(nullable = false, length = 11, unique = true)
     private String cpf;
@@ -34,8 +36,12 @@ public class Cliente {
     @Column(nullable = false)
     private BigDecimal debitoAtual;
 
+    @NotNull
     @CreationTimestamp
-    private LocalDateTime criadoEm;
+    private LocalDateTime criadoEm = LocalDateTime.now();
+
+    @Deprecated
+    public Cliente() {}
 
     public Cliente(String nome, String cpf, BigDecimal debitoAtual) {
         this.nome = nome;
@@ -58,5 +64,19 @@ public class Cliente {
     public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
-
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public void setDebitoAtual(BigDecimal debitoAtual) {
+        this.debitoAtual = debitoAtual;
+    }
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
+    }
 }
