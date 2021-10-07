@@ -39,7 +39,7 @@ docker-compose up -d
 
 ## Ambiente de produção
 
-Para rodar a aplicação em produção basta executá-la informando as variáveis de ambiente com a configuração do banco de dados:
+Para rodar a aplicação em produção basta executá-la informando a configuração do banco de dados de produção via variáveis de ambiente:
 ```
 DATABASE_URL=jdbc:postgresql://<hostname>:<port>/postgres DATABASE_USERNAME=<username> DATABASE_PASSWORD=<password> ./mvnw spring-boot:run
 ```
