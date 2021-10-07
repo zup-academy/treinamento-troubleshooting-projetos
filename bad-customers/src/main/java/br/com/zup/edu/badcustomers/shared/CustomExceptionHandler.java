@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.TransactionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -17,7 +16,7 @@ public class CustomExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
-    @ExceptionHandler( { DataAccessException.class, TransactionException.class })
+    @ExceptionHandler(DataAccessException.class)
     public ResponseEntity<?> handleDatabaseErrors(Exception ex, WebRequest request) {
 
         logger.error("Catching an unhandled database exception thrown by a controller: " + ex.getLocalizedMessage(), ex);
