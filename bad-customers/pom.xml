@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.zup.edu</groupId>
 	<artifactId>bad-customers</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>bad-customers</name>
 	<description>Microsserviço para gerenciar clientes devedores (caloteiros)</description>
 	<properties>

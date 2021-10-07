@@ -39,9 +39,16 @@ docker-compose up -d
 
 ## Ambiente de produção
 
-Para rodar a aplicação em produção basta executá-la informando a configuração do banco de dados de produção via variáveis de ambiente:
+1. Execute o build da aplicação para gerar o executável (JAR):
+```shell
+./mvnw clean package
 ```
-DATABASE_URL=jdbc:postgresql://<hostname>:<port>/postgres DATABASE_USERNAME=<username> DATABASE_PASSWORD=<password> ./mvnw spring-boot:run
+
+2. Copie o JAR para o ambiente de produção (encontra-se na pasta `target` gerada pelo Maven);
+
+3. Execute a aplicação informando a configuração do banco de dados de produção via variáveis de ambiente:
+```
+DATABASE_URL=jdbc:postgresql://<hostname>:<port>/postgres DATABASE_USERNAME=<username> DATABASE_PASSWORD=<password> java -jar bad-customers-1.0.1.jar
 ```
 
 ## Duvidas e suporte
