@@ -42,6 +42,6 @@ public class NovoClienteController {
                 .toUri();
 
         return ResponseEntity
-                .created(location).build();
+                .created(location).body(new NovoClienteResponse(cliente));
     }
 }
