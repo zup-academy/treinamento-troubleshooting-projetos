@@ -17,9 +17,7 @@ import javax.validation.constraints.Positive;
 public class DetalhaClienteController {
 
     @Autowired
-    private ClienteRepository jdbcRepository;
-
-    private final ClienteRepository repository;
+    private ClienteRepository repository;
 
     public DetalhaClienteController(ClienteRepository repository) {
         this.repository = repository;
@@ -28,7 +26,7 @@ public class DetalhaClienteController {
     @GetMapping("/api/clientes-caloteiros/{id}")
     public ResponseEntity<?> detalha(@PathVariable("id") @NotNull @Positive Long id) {
 
-        Cliente cliente = jdbcRepository.findById(id).orElseThrow(() -> {
+        Cliente cliente = repository.findById(id).orElseThrow(() -> {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "cliente não encontrado");
         });
 
