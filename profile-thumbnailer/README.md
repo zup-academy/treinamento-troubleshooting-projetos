@@ -29,6 +29,29 @@ cd profile-thumbnailer
 
 5. Consumir a API REST da aplicação via url http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/ .
 
+### Exemplo rápido: consumindo a API REST
+
+Uma boa forma de entender o que a API REST faz exatamente é executando-a. Podemos gerar um thumbnail de uma foto qualquer, para isso, basta submetermos uma imagem em formato base64 no payload JSON da requisição. Abaixo, usamos o comando `curl` como client HTTP para submetermos uma foto do Keanu Reeves:
+
+```shell
+curl -v -X POST \
+ -H "Content-Type: application/json" \
+ -d @samples\keanu-reeves-12-payload.json \
+ -o samples/thumbnail.png \
+ http://localhost:8080/api/users/eea0b8ba-b195-4e08-8a30-1df60854186e/thumbnails/preview
+```
+
+O endpoint da API acima exercitado é utilizado para preview do thumbnail em páginas web ou dispositivos mobile. Lembre-se que a API possui outros endpoints com o mesmo fim, mas que podem ser úteis em cenários diferentes.
+
+### Dica rápida: encodando sua foto em base64
+
+Para fazer você vai precisar encodar imagens em base64 e o inverso. Existem diversos sites online que podem auxiliar nessas transformações. Mas uma forma simples de encodar sua foto de perfil (ou qualquer imagem) em base64 é através do comando abaixo:
+```shell
+base64 -w0 minha-foto.png > minha-foto.png.txt
+```
+
+Desse modo você pode usá-la para fazer seus testes sempre que necessário :-)
+
 ## Ambiente de produção
 
 1. Execute o build da aplicação para gerar o executável (JAR):
