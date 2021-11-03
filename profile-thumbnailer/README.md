@@ -38,7 +38,7 @@ curl -v -X POST \
  -H "Content-Type: application/json" \
  -d @samples\keanu-reeves-12-payload.json \
  -o samples/thumbnail.png \
- http://localhost:8080/api/users/eea0b8ba-b195-4e08-8a30-1df60854186e/thumbnails/preview
+ http://localhost:8080/api/thumbnails/preview
 ```
 
 O endpoint da API acima exercitado é utilizado para preview do thumbnail em páginas web ou dispositivos mobile. Lembre-se que a API possui outros endpoints com o mesmo fim, mas que podem ser úteis em cenários diferentes.

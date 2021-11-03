@@ -7,14 +7,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.UUID;
 
 @RestController
 public class PreviewThumbnailController {
@@ -25,16 +27,16 @@ public class PreviewThumbnailController {
     private Watermark watermark;
 
     @PostMapping(
-        value = "/api/users/{id}/thumbnails/preview",
+        value = "/api/thumbnails/preview",
         produces = MediaType.IMAGE_PNG_VALUE
     )
-    public @ResponseBody byte[] previewThumbnail(@PathVariable UUID id, @Valid @RequestBody ProfilePhotoRequest photo) {
+    public @ResponseBody byte[] previewThumbnail(@Valid @RequestBody ProfilePhotoRequest request) {
 
-        LOGGER.info("Generating thumbnail 200x200 for user '{}'", id);
+        LOGGER.info("Generating thumbnail 200x200 for user '{}'", request.getId());
 
         try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
 
-            BufferedImage originalImage = photo.toImage();
+            BufferedImage originalImage = request.toImage();
             Thumbnails.of(originalImage)
                     .size(200, 200)
                     .outputFormat("png")
