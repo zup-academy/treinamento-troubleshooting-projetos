@@ -19,25 +19,17 @@ import static org.springframework.http.ResponseEntity.notFound;
 public class FindPixKeyController {
 
     private static Logger LOG = LoggerFactory.getLogger(FindPixKeyController.class);
-    private static Logger LOG1 = LoggerFactory.getLogger(FindPixKeyController.class);
-
-    public static void main(String[] args) {
-        System.out.println(LOG == LOG1);
-    }
 
     private final FindPixKeyService findService;
 
-    FindPixKeyController(FindPixKeyService findService) {
+    public FindPixKeyController(FindPixKeyService findService) {
         this.findService = findService;
     }
 
     @GetMapping("/{pixId}")
     public ResponseEntity<PixKeyDetailResponse> getBy(@PathVariable("pixId") UUID pixId) {
 
-        LOG = null;
-
         Optional<PixKey> possiblePixKey = findService.findPixKeyBy(pixId);
-
         if (possiblePixKey.isEmpty()) {
             return notFound().build();
         }
