@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>br.com.zup.edu</groupId>
 	<artifactId>pix-key-manager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2.0.42</version>
 	<name>pix-key-manager</name>
-	<description>Projeto de troubleshooting sobre erro de memória com JVM</description>
+	<description>Pix Key Manager</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
